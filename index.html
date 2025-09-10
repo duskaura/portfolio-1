@@ -19,6 +19,7 @@
       font-family: 'Poppins', sans-serif;
       background-color: #0f0f0f;
       color: #ffffff;
+      overflow-x: hidden;
     }
 
     header {
@@ -26,6 +27,11 @@
       justify-content: space-between;
       align-items: center;
       padding: 20px 60px;
+      position: sticky;
+      top: 0;
+      background: #0f0f0f;
+      z-index: 100;
+      border-bottom: 1px solid #222;
     }
 
     .logo {
@@ -51,19 +57,9 @@
       color: #ff4d5a;
     }
 
-    .nav-links li a::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background-color: #ff4d5a;
-      transition: width 0.3s ease;
-    }
-
-    .nav-links li a:hover::after {
-      width: 100%;
+    section {
+      padding: 60px 20px;
+      text-align: center;
     }
 
     .hero {
@@ -71,7 +67,6 @@
       flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-      padding: 60px 20px;
       gap: 60px;
     }
 
@@ -80,13 +75,7 @@
       height: 300px;
       border-radius: 50%;
       object-fit: cover;
-      background: none;
-      padding: 0;
       border: 3px solid #ff4d5a;
-    }
-
-    .hero-text {
-      max-width: 500px;
     }
 
     .hero-text h1 {
@@ -133,54 +122,287 @@
       background-color: #e63e4b;
     }
 
-    @media (max-width: 768px) {
-      .hero {
-        flex-direction: column;
-        text-align: center;
-      }
+    .anime-section, .football-section {
+      margin-top: 50px;
+    }
 
-      .hero-text h1 {
-        font-size: 2.2rem;
-      }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 20px;
+    }
 
-      .hero-text h2 {
-        font-size: 1.5rem;
-      }
+    .card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 20px;
+      width: 220px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(255, 77, 90, 0.4);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    /* GAME SECTION */
+    #gameSection {
+      margin-top: 50px;
+    }
+
+    canvas {
+      background: #111;
+      border: 3px solid #ff4d5a;
+      display: block;
+      margin: 20px auto;
+    }
+
+    #startBtn, #restartBtn {
+      padding: 12px 25px;
+      border: none;
+      background: #ff4d5a;
+      color: white;
+      font-size: 1rem;
+      border-radius: 25px;
+      cursor: pointer;
+      margin: 10px;
+      transition: background 0.3s ease;
+    }
+
+    #startBtn:hover, #restartBtn:hover {
+      background: #e63e4b;
+    }
+
+    #score {
+      margin-top: 15px;
+      font-size: 1.2rem;
+    }
+
+    /* FUN BUTTON SECTION */
+    .fun-btn {
+      margin-top: 40px;
+      padding: 15px 30px;
+      background: linear-gradient(45deg, #ff4d5a, #660000);
+      border: none;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .fun-btn:hover {
+      transform: scale(1.1);
+    }
+
+    #hiddenImg {
+      display: none;
+      margin-top: 20px;
+      width: 300px;
+      border-radius: 10px;
+    }
+
+    /* Cursor Glow */
+    body {
+      cursor: none;
+    }
+
+    .cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: radial-gradient(circle, red, black);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
     }
   </style>
 </head>
 <body>
+  <div class="cursor"></div>
+
   <header>
     <div class="logo">Duskaura</div>
     <nav>
       <ul class="nav-links">
         <li><a href="#">Home</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Skills</a></li>
-        <li><a href="#">Education</a></li>
-        <li><a href="#">Experience</a></li>
+        <li><a href="#">Anime</a></li>
+        <li><a href="#">Football</a></li>
+        <li><a href="#">Game</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
-    </nav
-   class="hero">
-  <div class="profile-pic">
-   <img src="758545f2-b74e-4e74-bc44-59d02891136f.png" alt="Duskaura" />
-  </div>
-   <div class="hero-text">
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="profile-pic">
+      <img src="https://media.livewallpapers.com/images/high/anime-devil-boy-wallpaper.webp" alt="Duskaura">
+    </div>
+    <div class="hero-text">
       <h1>Hi, It's <span style="color: #ff4d5a;">Duskaura</span></h1>
-      <h2>I'm a <span style="color: #ff4d5a;">Developer</span></h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum quidem, saepe dolores accusamus voluptatum non corporis libero sint officiis quod natus totam.</p>
+      <h2>I am a <span style="color: #ff4d5a;">Student / Learner</span></h2>
+      <p>Hi there, my name is Umer. I'm from Pakistan, I love coding, anime, and football.</p>
       <div class="social-icons">
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#"><i class="fab fa-github"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.instagram.com/direct/t/17843092623149914/" target="_blank"><i class="fab fa-instagram"></i></a>
       </div>
       <a href="#" class="hire-btn">Hire me</a>
     </div>
   </section>
+
+  <!-- Anime Section -->
+  <section class="anime-section">
+    <h1>✨ I Love Anime ✨</h1>
+    <div class="cards">
+      <div class="card">
+        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ8lb2cwo6BJd40qBVT9WjBw056DKzCgpy7Mkv_prh85-RWdCrg1p9flXh5JwSijN8V8OcdALX0AueOMk6bzqq3Hf0c4dZERQPZbpCRl7jx" alt="Naruto">
+        <h2>Naruto</h2>
+      </div>
+      <div class="card">
+        <img src="https://ichef.bbci.co.uk/images/ic/1920xn/p072ms6r.jpg" alt="Attack on Titan">
+        <h2>Attack on Titan</h2>
+      </div>
+      <div class="card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSqDhl1vZWOoqEZdLQY0_aQ2ZQDdCXYLgM9Q&s" alt="Vinland Saga">
+        <h2>Vinland Saga</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Football Section -->
+  <section class="football-section">
+    <h1>⚽ My Favourite Footballers ⚽</h1>
+    <div class="cards">
+      <div class="card"><h2>Messi</h2></div>
+      <div class="card"><h2>Ronaldo</h2></div>
+      <div class="card"><h2>Neymar</h2></div>
+      <div class="card"><h2>Ibrahimović</h2></div>
+      <div class="card"><h2>Lewandowski</h2></div>
+    </div>
+  </section>
+
+  <!-- Game Section -->
+  <section id="gameSection">
+    <h1>🚗 Car Game 🚗</h1>
+    <button id="startBtn">Start Playing</button>
+    <canvas id="gameCanvas" width="400" height="500"></canvas>
+    <div id="score">Score: 0</div>
+    <button id="restartBtn" style="display:none;">Restart</button>
+  </section>
+
+  <!-- After Game Text -->
+  <section>
+    <p>This is my first formal website, I hope you liked it.</p>
+    <p>If you want to contact me, click the Instagram link above to DM me.</p>
+  </section>
+
+  <!-- Fun Button -->
+  <section>
+    <button class="fun-btn" onclick="document.getElementById('hiddenImg').style.display='block'">
+      Get a free mobile phone of your choice
+    </button>
+    <p>⚠️ Don't click this button...</p>
+    <img id="hiddenImg" src="https://ichef.bbci.co.uk/images/ic/1920xn/p072ms6r.jpg" alt="Surprise">
+  </section>
+
+  <script>
+    // Glowing cursor
+    const cursor = document.querySelector(".cursor");
+    document.addEventListener("mousemove", e => {
+      cursor.style.left = e.clientX + "px";
+      cursor.style.top = e.clientY + "px";
+    });
+
+    // Car Game
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+    let car, obstacles, score, gameInterval, obstacleInterval, gameRunning = false;
+
+    function startGame() {
+      car = { x: 175, y: 400, width: 50, height: 80, speed: 8 };
+      obstacles = [];
+      score = 0;
+      gameRunning = true;
+      document.getElementById("score").innerText = "Score: 0";
+      document.getElementById("restartBtn").style.display = "none";
+      gameInterval = setInterval(updateGame, 50);
+      obstacleInterval = setInterval(addObstacle, 1500);
+      countScore();
+    }
+
+    function endGame() {
+      gameRunning = false;
+      clearInterval(gameInterval);
+      clearInterval(obstacleInterval);
+      alert("Game Over! Your score: " + score);
+      document.getElementById("restartBtn").style.display = "inline-block";
+    }
+
+    function addObstacle() {
+      let x = Math.floor(Math.random() * (canvas.width - 50));
+      obstacles.push({ x: x, y: -50, width: 50, height: 50 });
+    }
+
+    function updateGame() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Draw car
+      ctx.fillStyle = "red";
+      ctx.fillRect(car.x, car.y, car.width, car.height);
+
+      // Draw obstacles
+      ctx.fillStyle = "white";
+      obstacles.forEach((obs, i) => {
+        obs.y += 5;
+        ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
+
+        if (obs.y > canvas.height) obstacles.splice(i, 1);
+
+        if (
+          car.x < obs.x + obs.width &&
+          car.x + car.width > obs.x &&
+          car.y < obs.y + obs.height &&
+          car.y + car.height > obs.y
+        ) {
+          endGame();
+        }
+      });
+    }
+
+    function countScore() {
+      if (gameRunning) {
+        score += 10;
+        document.getElementById("score").innerText = "Score: " + score;
+        setTimeout(countScore, 1000);
+      }
+    }
+
+    document.addEventListener("keydown", e => {
+      if (gameRunning) {
+        if (e.key === "ArrowLeft" && car.x > 0) car.x -= car.speed;
+        if (e.key === "ArrowRight" && car.x < canvas.width - car.width) car.x += car.speed;
+      }
+    });
+
+    document.getElementById("startBtn").addEventListener("click", startGame);
+    document.getElementById("restartBtn").addEventListener("click", startGame);
+  </script>
 </body>
 </html>
+
+
 
 
 
