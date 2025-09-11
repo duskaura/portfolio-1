@@ -15,6 +15,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
       background-color: #0f0f0f;
@@ -237,17 +241,17 @@
     <div class="logo">Duskaura</div>
     <nav>
       <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Anime</a></li>
-        <li><a href="#">Football</a></li>
-        <li><a href="#">Game</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#anime">Anime</a></li>
+        <li><a href="#football">Football</a></li>
+        <li><a href="#gameSection">Game</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <!-- Hero -->
-  <section class="hero">
+  <section class="hero" id="home">
     <div class="profile-pic">
       <img src="https://media.livewallpapers.com/images/high/anime-devil-boy-wallpaper.webp" alt="Duskaura">
     </div>
@@ -255,7 +259,7 @@
       <h1>Hi, I'm <span style="color: #ff4d5a;">Duskaura</span></h1>
       <h2>A curious student and lifelong learner</h2>
       <p>My name is Umer. I'm from Pakistan, and I enjoy coding, anime, and football.</p>
-      <div class="social-icons">
+      <div class="social-icons" id="contact">
         <a href="https://www.instagram.com/direct/t/17843092623149914/" target="_blank"><i class="fab fa-instagram"></i></a>
       </div>
       <a href="#" class="hire-btn">Hire me</a>
@@ -263,7 +267,7 @@
   </section>
 
   <!-- Anime Section -->
-  <section class="anime-section">
+  <section class="anime-section" id="anime">
     <h1>My Favorite Anime</h1>
     <div class="cards">
       <div class="card">
@@ -271,7 +275,7 @@
         <h2>Naruto</h2>
       </div>
       <div class="card">
-        <img src="https://ichef.bbci.co.uk/images/ic/1920xn/p072ms6r.jpg" alt="Attack on Titan">
+        <img src="https://static0.moviewebimages.com/wordpress/wp-content/uploads/2022/12/341369.jpg" alt="Attack on Titan">
         <h2>Attack on Titan</h2>
       </div>
       <div class="card">
@@ -282,15 +286,15 @@
   </section>
 
   <!-- Football Section -->
-  <section class="football-section">
+  <section class="football-section" id="football">
     <h1>Footballers I Admire</h1>
     <div class="cards">
       <div class="card"><h2>Messi</h2></div> 
-      <div class="card"><h2>Ronaldo</h2></div>ZS
+      <div class="card"><h2>Ronaldo</h2></div>
       <div class="card"><h2>Neymar</h2></div>
       <div class="card"><h2>Ibrahimovic</h2></div>
       <div class="card"><h2>Lewandowski</h2></div>
-    </div>  <s></s>
+    </div>
   </section>
 
   <!-- Game Section -->
@@ -401,6 +405,7 @@
   </script>
 </body>
 </html>
+
 
 
 
